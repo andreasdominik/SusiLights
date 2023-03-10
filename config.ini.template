@@ -19,7 +19,30 @@
 #      (maybe not neeeded?)
 #
 [global]
-this_skill_name = TEMPLATE_SKILL
+this_skill_name = SusiLights
+
+# lights are defined as unique combinations of room:light
+# with driver and a list of driver specific parameters.
+# The joker matches any type of light in a room (if there is only one
+# light in the room).
+#
+# currently supported drivers include shelly devices
+# (maybe all types of shelly devices may be switched on/off
+# with the shelly1 driver) and gpio pins of a raspberry pi.
+#
+# - shelly1 (switch)
+# - shellybulb (color bulb)
+# - shellyplug (switch)
+# - shelly25 (switch)
+# - gpio (switch)
+#
+joker = light
+livingroom:light = shelly1, 192.168.1.42, rhasspy, passwd
+livingroom:floor_lamp = shelly1, 192.168.1.43, rhasspy, passwd
+kitchen:ceiling_lamp = shellybulb, 192.168.1.45, rhasspy, passwd
+office:desk_lamp = shellyplug, 192.168.47, rhasspy, passwd
+
+lanay:light = gpio, 17, 192.168.1.47, rhasspy, passwd
 
 
 # These sections are for sentences and sentence snippets
@@ -28,12 +51,7 @@ this_skill_name = TEMPLATE_SKILL
 # publish_say(:skill_echo, "my new skill")
 #
 [de]
-:skill_echo =  Hallo, ich bin die Hermes-Skill
-:slot_echo_1 = der Wert des Slots
-:slot_echo_2 = ist
-:end_say =     das wars
-:ask_echo_slots = soll ich die Slots des Intent aufsagen?
-:no_slots =    der Intent hat keine Slots
+:no_on_or_off = ich habe nicht verstanden ob du das Licht einschalten oder ausschalten willst
 
 # rules to identify falsedetection of intents by the
 # NLU can be added in the section of each language.
@@ -41,20 +59,9 @@ this_skill_name = TEMPLATE_SKILL
 # Only if it matches none of the rules, the action is aborted
 # because of false detection!
 #
-# SayTime:must_include = spät, ist
-# SayTime:must_chain = spät, es, ist
-# SayTime:must_chain = spät, ist, es
-# SayTime:must_span = spät, bitte
 
 [en]
-:skill_echo =  hello, i am the Hermes skill
-:slot_echo_1 = the value of the slot
-:slot_echo_2 = is
-:end_say =     and done
-:ask_echo_slots = do you want me to list the slots of this intent?
-:no_slots =    the intent has no slots
+:no_on_or_off = i did not understand if you want to turn the light on or off
 
-# SayTime:must_include = time, is
-# SayTime:must_chain = what, is
-# SayTime:must_span = can, time, (is|is please)
+
 
