@@ -34,7 +34,6 @@ If the Rhasspy server is running (recommended) the installer will
 install the skill on the local machine and upload intents and slots
 to the Rhasspy server (locally or remote in a server-satellite setup).
 
-
 ## Usage
 
 Basic idea is to configure a set of lights in different rooms of the house 
@@ -92,6 +91,32 @@ office:desk_lamp = shellyplug, 192.168.1.176, rhasspy, passwd
 
 lanay:light = gpio, 17, 192.168.1.47, rhasspy, passwd
 ```
+
+## Drivers
+### GPIO switching
+
+If lights are connected to GPIO pins of a Raspberry Pi (or similar), the driver
+gpio can be used. In this case on the Raspberry Pi `pigpio` must be installed
+and ssh access must be enabled. The skill will then use `ssh` to login to the 
+pi or `sshpass` to login with a password (both must be available, of course).
+
+### Shelly devices
+
+All types of shelly devices may be switched on/off with the shelly1 driver.
+The shelly-devices must be configured with a fixed IP address or hostname 
+as client in the local network. Following Rhasspy-style it is not necessary
+nor recommended to use the shelly cloud service!
+
+### Other drivers
+
+Other hardware drivers may be added easily as log as they can be 
+controlled via http or MQTT requests. 
+
+Because the shelly devices are are low-price, easy to use and 
+cloud-free, the autor of this skill discontinued to use other hardware. But
+if somebody has an installation with Hue, Ikea or other lights, please 
+contact me and we can easily add a driver for your hardware 
+(if you help with testing ;-).
 
 ## Slots
 
