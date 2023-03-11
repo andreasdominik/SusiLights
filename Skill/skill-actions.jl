@@ -18,9 +18,17 @@ function on_or_off_action(topic, payload)
 
     print_log("action on_or_off_action() in Susi:Lights started.")
 
+    # test if ON/OF is fo a light:
+    #
+    device = extract_slot_value(SLOT_DEVICE, payload, default="unknown_device")
+    if !(device in LIGHT_DEVICES)
+        print_log("SusiLights:on_off aborted - $device is not a light device")
+        return true
+    end
+
+
     device = match_device_room(APP_NAME, payload, 
                     slot_device="device", slot_room="room")
-println("***** device: $(device)")
     action = extract_slot_value(SLOT_ON_OR_OFF, payload, default="on")
 
     if !(action in ["on", "off"])

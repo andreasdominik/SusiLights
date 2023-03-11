@@ -19,6 +19,10 @@ const SLOT_LIGHT_SETTINGS = "light_settings"
 const SLOT_ON_OR_OFF = "on_or_off"
 const SLOT_ROOM = "room"
 
+# supported devices:
+#
+const LIGHT_DEVICES = ["light", "floor_light", "desk_light", 
+                       "night_light", "wall_light", "ceiling_light"]   
 
 # name of entries in config.ini:
 #
