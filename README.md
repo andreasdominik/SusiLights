@@ -128,3 +128,16 @@ devices and doe not come with own slot lists.
 Currently only the intent `Susi:on_off` is supported.    
 `Susi:LightSettings` is defined, but not yet implemented (change colour 
 or brightness).
+
+
+## Language support
+Of course home automation skills are language dependent. Within the HermesMQTT.jl
+Framework a Skill can support multiple languages by defining the intents for
+different languages in the `profiles/<language>` subdirectory of the repository and
+by defining dialogues for different languages in the config.ini file of the skill.
+
+Currently English and German are supported.
+
+Native speakers of other languages are welcome to contribute to the skill to make 
+it available for more languages.
+No changes in the code are required to support a new language.
